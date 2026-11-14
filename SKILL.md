@@ -1,6 +1,6 @@
 ---
 name: linkedin-comment-skill
-description: Find LinkedIn posts from the past 24 hours, 3 days, and 7 days and comment on them in two modes the user chooses: draft-only (safe, default) or opt-in auto-posting with configurable rate limits. Use when the user asks to comment on LinkedIn, grow on LinkedIn, engage with posts, or work a 24h / 3-day / 7-day comment queue. Draft mode never auto-posts; auto mode only runs when the user explicitly chooses it and sets limits.
+description: "Find LinkedIn posts from the past 24 hours, 3 days, and 7 days and comment on them in two modes the user chooses - draft-only (safe, default) or opt-in auto-posting with configurable rate limits. Use when the user asks to comment on LinkedIn, grow on LinkedIn, engage with posts, or work a 24h / 3-day / 7-day comment queue. Draft mode never auto-posts; auto mode only runs when the user explicitly chooses it and sets limits."
 ---
 
 # LinkedIn Comment Skill
