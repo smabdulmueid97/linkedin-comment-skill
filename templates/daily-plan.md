@@ -1,5 +1,14 @@
 # Daily plan — fill this in once, reuse every day
 
+## Mode — pick one (default: draft)
+- [ ] Draft-only (safe, recommended) — I approve and post each comment
+- [ ] Auto-post (opt-in, I accept the restriction risk) — see config.yaml for limits
+
+## My limits (see templates/config.yaml — prompt numbers beat the config for that run)
+- Comments per hour: 3
+- Comments per day: 10
+- Min delay between comments: 20 minutes
+
 ## My 2–3 topic pillars
 1.
 2.

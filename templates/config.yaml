@@ -1,0 +1,40 @@
+# linkedin-comment-skill — config
+# Copy this file and edit the numbers. The skill reads it before every run.
+# Mode is the big choice. Default is "draft" — safe, recommended.
+#   draft: the skill drafts comments, YOU approve and post each one. No auto-posting.
+#   auto:  the skill posts approved-style comments on your behalf, within the limits below.
+#          Opt-in only. LinkedIn bans bots / unauthorised automated commenting (User
+#          Agreement 8.2) and accounts risk restriction or shutdown. You accept that
+#          risk by choosing "auto". The skill will not switch modes on its own.
+
+mode: draft  # draft | auto
+
+# Rate limits — set your own numbers. These are the defaults.
+# Example the user asked for: 3 comments per hour.
+limits:
+  comments_per_hour: 3
+  comments_per_day: 10
+  comments_per_window_24h: 10
+  comments_per_window_3d: 5
+  comments_per_window_7d: 3
+  min_delay_seconds_between_comments: 1200  # 20 minutes between comments
+  max_comments_per_post_thread: 1
+
+# Presets (uncomment one block to use it, and delete the limits above):
+# cautious:  1 per hour, 5 per day, 20 min delay — slowest, safest
+# standard:  3 per hour, 10 per day, 20 min delay — the default above
+# aggressive: 5 per hour, 20 per day, 12 min delay — faster, higher risk
+# preset: standard
+
+# Safety stops — the run stops immediately if any of these happen.
+safety:
+  stop_on_linkedin_warning: true
+  stop_if_account_restricted: true
+  never_post_while_user_is_commenting_manually: true
+  require_human_review_of_first_batch: true  # auto mode: review the first 3 drafts first
+
+# What to comment on.
+pillars:
+  - AI engineering
+  - freelancing
+  # - add a third pillar here
