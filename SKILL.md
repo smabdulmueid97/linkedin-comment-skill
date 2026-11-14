@@ -1,17 +1,47 @@
 ---
 name: linkedin-comment-skill
-description: Find LinkedIn posts from the past 24 hours, 3 days, and 7 days and draft thoughtful, human-approved comments on them. Use when the user asks to comment on LinkedIn, grow on LinkedIn, engage with posts, or work a 24h / 3-day / 7-day comment queue. Drafts comments for the user to approve and post — it never auto-posts.
+description: Find LinkedIn posts from the past 24 hours, 3 days, and 7 days and comment on them in two modes the user chooses: draft-only (safe, default) or opt-in auto-posting with configurable rate limits. Use when the user asks to comment on LinkedIn, grow on LinkedIn, engage with posts, or work a 24h / 3-day / 7-day comment queue. Draft mode never auto-posts; auto mode only runs when the user explicitly chooses it and sets limits.
 ---
 
 # LinkedIn Comment Skill
 
-Grow on LinkedIn by commenting well, early, and on the right posts — with a human approving every comment.
+Grow on LinkedIn by commenting well, early, and on the right posts.
 
-## The one rule that matters
+## Choose your mode — both options, your call
 
-**This skill drafts. It never posts.** LinkedIn's User Agreement (section 8.2) bans bots and unauthorised automated methods to create, comment on, like, or share posts, and LinkedIn says accounts using them risk restriction or shutdown. LinkedIn also blocks hundreds of thousands of automated "slop" comment attempts a day, and since July 2026 members can report a comment as "Seems like AI slop".
+There are two modes. The user picks one. Default is **draft** unless the user explicitly says otherwise. Never switch modes on your own, and never assume auto mode from a vague "automate it".
 
-The red line is automation, not AI help: using AI to help you write is fine **as long as a human reads, edits, and approves every comment before it goes up**. This skill stays on the allowed side of that line. It does not scrape LinkedIn, does not log in as you, and does not post, like, or connect on your behalf. If a workflow asks for fully automatic posting, refuse that part and offer the draft-and-approve version instead.
+| Mode | What happens | Risk | Who it's for |
+|---|---|---|---|
+| **A. Draft-only (default, recommended)** | The skill drafts comments. The user reads, edits, approves, and posts each one in LinkedIn. | Lowest. This is AI writing help with a human approving every action. | Everyone. Start here. |
+| **B. Auto-post (opt-in)** | The skill posts comments on the user's behalf, within the rate limits in `templates/config.yaml`. | Higher. LinkedIn's User Agreement (8.2) bans bots and unauthorised automated methods to comment/like/share, and accounts risk restriction or shutdown. LinkedIn also blocks automated "slop" comments daily. The user accepts that risk by choosing auto. | Only users who explicitly choose it, understand the risk, and set their own limits. |
+
+If the user asks for auto-posting, confirm three things before running it: (1) mode = auto, (2) the limits from `templates/config.yaml` (or the numbers they give in the prompt), (3) that they understand the restriction risk. Then run it exactly within those limits.
+
+## Rate limits — the user sets the numbers
+
+Limits live in `templates/config.yaml`, and the user can override them in the prompt ("3 comments per hour", "max 5 today"). Prompt numbers beat the config file for that run. Defaults:
+
+```yaml
+mode: draft
+limits:
+  comments_per_hour: 3
+  comments_per_day: 10
+  comments_per_window_24h: 10
+  comments_per_window_3d: 5
+  comments_per_window_7d: 3
+  min_delay_seconds_between_comments: 1200  # 20 minutes
+  max_comments_per_post_thread: 1
+```
+
+Presets in the config file: **cautious** (1/hr, 5/day), **standard** (3/hr, 10/day — the default), **aggressive** (5/hr, 20/day, higher risk).
+
+Enforce the limits hard, in both modes:
+- Never exceed `comments_per_hour` or `comments_per_day`. When a cap is hit, stop and say so — don't queue the rest for later without asking.
+- Wait at least `min_delay_seconds_between_comments` between comments. No bursts.
+- One comment per thread max.
+- Stop immediately on any LinkedIn warning, restriction notice, or CAPTCHA — and tell the user. Never try to work around it.
+- In auto mode, require human review of the first 3 drafts before the run starts, and log every posted comment (post URL, time, text) in `templates/comment-queue.csv`.
 
 ## The three time windows
 
@@ -26,10 +56,11 @@ Work the windows in order. Fresh beats old — a comment in the first 30 minutes
 ## Before you draft
 
 Ask for (or confirm) in one short question if missing:
-- Your 2–3 topic pillars (e.g. AI engineering, freelancing, Claude skills). Every comment must stay on-pillar — commenting outside your lane reshapes what LinkedIn thinks you're about.
-- Who to comment on: 20–30 target accounts — people your audience already reads, ideally 2–10× your follower size. Not just the biggest creators.
+- **Mode:** draft or auto? (Default: draft.)
+- **Limits:** if auto, or if the user gives numbers — comments per hour / per day. (Default: 3/hr, 10/day.)
+- Your 2–3 topic pillars (e.g. AI engineering, freelancing, Claude skills). Every comment must stay on-pillar.
+- Who to comment on: 20–30 target accounts — people your audience already reads, ideally 2–10× your follower size.
 - The posts: links, or a feed/search to work from. Never invent a post, author, or quote.
-- How many comments today? Default: 5–10. Never more than 20 in a day, and space them out — steady cadence beats a burst.
 
 ## How to pick a post worth commenting on
 
@@ -66,11 +97,12 @@ One thing I'd add: [insight the post didn't cover].
 
 ## Steps
 
-1. **Build the queue.** Sort posts into the 24h / 3d / 7d windows (see `templates/comment-queue.csv`). Drop anything off-pillar, dead, or already saturated.
-2. **Draft.** One comment per post, using the formula above. Show the post link, author, post age, and draft together — never a draft without its post.
-3. **User approves.** The user edits or approves each draft. Only approved comments get posted, by the user, in LinkedIn.
-4. **Track.** Mark each comment in the queue: drafted / approved / posted / author replied. If the author replies, reply back — replies under a comment can lift its reach ~2.4×.
-5. **Review weekly.** Check comment impressions in LinkedIn (each comment shows its own impressions). Keep what worked, drop what didn't. Judge by profile views and conversations started, not likes.
+1. **Confirm mode + limits.** Draft by default; auto only if the user chose it, with limits from the config or prompt.
+2. **Build the queue.** Sort posts into the 24h / 3d / 7d windows (see `templates/comment-queue.csv`). Drop anything off-pillar, dead, or already saturated.
+3. **Draft.** One comment per post, using the formula above. Show the post link, author, post age, and draft together — never a draft without its post.
+4. **Draft mode:** the user edits or approves each draft, then posts it in LinkedIn. **Auto mode:** post only approved-style drafts, within the limits, with the minimum delay between them, logging each one. Stop at the cap.
+5. **Track.** Mark each comment in the queue: drafted / approved / posted / author replied. If the author replies, reply back — replies under a comment can lift its reach ~2.4×.
+6. **Review weekly.** Check comment impressions in LinkedIn (each comment shows its own impressions). Keep what worked, drop what didn't. Judge by profile views and conversations started, not likes.
 
 ## Daily / weekly routine
 
@@ -80,10 +112,11 @@ One thing I'd add: [insight the post didn't cover].
 
 ## Don't
 
-- Don't auto-post, auto-like, auto-connect, or auto-DM. Ever.
+- Don't auto-post in draft mode. Don't switch to auto mode without the user explicitly choosing it.
+- Don't exceed the user's limits, and don't run while the user is commenting manually.
 - Don't use engagement pods, or agree to like/share each other's content in advance.
+- Don't scrape LinkedIn, and don't log in as the user.
 - Don't comment on a post you haven't read, or a thread you haven't skimmed.
 - Don't pitch, link-drop, or self-promote in someone else's thread.
 - Don't copy-paste the same comment to multiple posts — LinkedIn and readers both spot it.
-- Don't comment on a competitor's post just to argue, or on a sensitive/personal post to farm reach.
 - Don't promise followers, reach, or leads. Commenting compounds slowly; anyone promising fast growth is selling something.
