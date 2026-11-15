@@ -3,6 +3,7 @@
 </p>
 
 <p align="center">
+  <a href="https://smabdulmueid97.github.io/linkedin-comment-skill/"><img alt="Live" src="https://img.shields.io/badge/Live-GitHub_Pages-222222?style=flat-square&logo=githubpages&logoColor=white" /></a>
   <a href="https://github.com/smabdulmueid97/linkedin-comment-skill/blob/main/LICENSE"><img alt="License: MIT" src="https://img.shields.io/github/license/smabdulmueid97/linkedin-comment-skill?style=flat-square" /></a>
   <a href="https://github.com/smabdulmueid97/linkedin-comment-skill"><img alt="Claude Code skill" src="https://img.shields.io/badge/Claude_Code-skill-blueviolet?style=flat-square" /></a>
   <a href="https://github.com/smabdulmueid97/linkedin-comment-skill"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" /></a>
@@ -14,6 +15,10 @@
 <p align="center">
   Grow on LinkedIn by commenting well — on posts from the <b>past 24 hours, 3 days, and 7 days</b>.<br />
   Two modes, <b>your choice</b>: draft-only (safe) or opt-in auto-posting with <b>your own rate limits</b>.
+</p>
+
+<p align="center">
+  🔗 <b><a href="https://smabdulmueid97.github.io/linkedin-comment-skill/">Live: https://smabdulmueid97.github.io/linkedin-comment-skill/</a></b>
 </p>
 
 <p align="center">
