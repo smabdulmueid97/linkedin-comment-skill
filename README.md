@@ -2,6 +2,10 @@
   <img src="assets/banner.svg" alt="linkedin-comment-skill — comment early, comment well" width="100%" />
 </p>
 
+<p align="center">
+  <b>🚀 Try the live demo — <a href="https://smabdulmueid97.github.io/linkedin-comment-skill/">See it in action</a></b>
+</p>
+
 <div align="center">
 
 # linkedin-comment-skill
@@ -14,8 +18,6 @@ Two modes, **your choice**: draft-only (safe) or opt-in auto-posting with **your
 [![License: MIT](https://img.shields.io/github/license/smabdulmueid97/linkedin-comment-skill?style=flat-square)](https://github.com/smabdulmueid97/linkedin-comment-skill/blob/main/LICENSE)
 [![Stars](https://img.shields.io/github/stars/smabdulmueid97/linkedin-comment-skill?style=flat-square)](https://github.com/smabdulmueid97/linkedin-comment-skill/stargazers)
 [![Last commit](https://img.shields.io/github/last-commit/smabdulmueid97/linkedin-comment-skill?style=flat-square)](https://github.com/smabdulmueid97/linkedin-comment-skill/commits/main)
-
-**[▶ Live: https://smabdulmueid97.github.io/linkedin-comment-skill/](https://smabdulmueid97.github.io/linkedin-comment-skill/)**
 
 [Modes](#-two-modes--your-choice) • [Windows](#-the-three-windows) • [Limits](#️-set-your-own-limits) • [Install](#-install--30-seconds) • [Good comment](#-a-good-comment-in-one-line)
 
