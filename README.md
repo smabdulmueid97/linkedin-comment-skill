@@ -2,32 +2,24 @@
   <img src="assets/banner.svg" alt="linkedin-comment-skill — comment early, comment well" width="100%" />
 </p>
 
-<p align="center">
-  <a href="https://smabdulmueid97.github.io/linkedin-comment-skill/"><img alt="Live" src="https://img.shields.io/badge/Live-GitHub_Pages-222222?style=flat-square&logo=githubpages&logoColor=white" /></a>
-  <a href="https://github.com/smabdulmueid97/linkedin-comment-skill/blob/main/LICENSE"><img alt="License: MIT" src="https://img.shields.io/github/license/smabdulmueid97/linkedin-comment-skill?style=flat-square" /></a>
-  <a href="https://github.com/smabdulmueid97/linkedin-comment-skill"><img alt="Claude Code skill" src="https://img.shields.io/badge/Claude_Code-skill-blueviolet?style=flat-square" /></a>
-  <a href="https://github.com/smabdulmueid97/linkedin-comment-skill"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" /></a>
-  <a href="https://github.com/smabdulmueid97/linkedin-comment-skill/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/smabdulmueid97/linkedin-comment-skill?style=flat-square" /></a>
-</p>
+<div align="center">
 
-<h1 align="center">linkedin-comment-skill</h1>
+# linkedin-comment-skill
 
-<p align="center">
-  Grow on LinkedIn by commenting well — on posts from the <b>past 24 hours, 3 days, and 7 days</b>.<br />
-  Two modes, <b>your choice</b>: draft-only (safe) or opt-in auto-posting with <b>your own rate limits</b>.
-</p>
+**Grow on LinkedIn by commenting well — on posts from the past 24 hours, 3 days, and 7 days.**
 
-<p align="center">
-  🔗 <b><a href="https://smabdulmueid97.github.io/linkedin-comment-skill/">Live: https://smabdulmueid97.github.io/linkedin-comment-skill/</a></b>
-</p>
+Two modes, **your choice**: draft-only (safe) or opt-in auto-posting with **your own rate limits**.
 
-<p align="center">
-  <a href="#-two-modes-your-choice">Modes</a> •
-  <a href="#-the-three-windows">Windows</a> •
-  <a href="#-set-your-own-limits">Limits</a> •
-  <a href="#-install-30-seconds">Install</a> •
-  <a href="#-a-good-comment-in-one-line">Good comment</a>
-</p>
+[![Live](https://img.shields.io/badge/Live-GitHub_Pages-222222?style=flat-square&logo=githubpages&logoColor=white)](https://smabdulmueid97.github.io/linkedin-comment-skill/)
+[![License: MIT](https://img.shields.io/github/license/smabdulmueid97/linkedin-comment-skill?style=flat-square)](https://github.com/smabdulmueid97/linkedin-comment-skill/blob/main/LICENSE)
+[![Stars](https://img.shields.io/github/stars/smabdulmueid97/linkedin-comment-skill?style=flat-square)](https://github.com/smabdulmueid97/linkedin-comment-skill/stargazers)
+[![Last commit](https://img.shields.io/github/last-commit/smabdulmueid97/linkedin-comment-skill?style=flat-square)](https://github.com/smabdulmueid97/linkedin-comment-skill/commits/main)
+
+**[▶ Live: https://smabdulmueid97.github.io/linkedin-comment-skill/](https://smabdulmueid97.github.io/linkedin-comment-skill/)**
+
+[Modes](#-two-modes--your-choice) • [Windows](#-the-three-windows) • [Limits](#️-set-your-own-limits) • [Install](#-install--30-seconds) • [Good comment](#-a-good-comment-in-one-line)
+
+</div>
 
 ---
 
@@ -86,7 +78,7 @@ When a cap is hit, the run **stops** — it doesn't queue the rest for later. It
 | **Past 3 days** | Every 3 days | Only if the thread is still alive or the post is evergreen. |
 | **Past 7 days** | Weekly | Only for key authors or evergreen posts. A dead post is worth nothing — skip it. |
 
-## 🚀 Install (30 seconds)
+## 🚀 Install — 30 seconds
 
 ```bash
 git clone https://github.com/smabdulmueid97/linkedin-comment-skill.git
